@@ -1,0 +1,1 @@
+window.alert("Our javascript file is working!");
