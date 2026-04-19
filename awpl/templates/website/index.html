@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'Index_style.css' %}">
+{% endblock %}
+
+{% block title %}AWPL - Home{% endblock %}
+
+{% block header %}Welcome to AWPL!{% endblock %}
+
+{% block content %}
+    <p>Discover our amazing products and services. Explore our shop to find what you need!</p>
+    <button onclick="window.location.href='/shop/'">Visit Shop</button>
+{% endblock %}
