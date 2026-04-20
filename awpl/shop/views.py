@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Product
 
 # Create your views here.
 def shop(request):
-    return render(request, 'shop_index.html')
+    products = Product.objects.all()
+    return render(request, 'shop_index.html', {'products': products})

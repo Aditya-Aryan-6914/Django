@@ -1,15 +1,24 @@
+{% extends 'layout.html' %}
+{% load static tailwind_tags %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block head %}
     <link rel="stylesheet" href="{% static 'Index_style.css' %}">
-    <title>AWPL - shop</title>
-</head>
-<body>
-    <h1>Welcome to AWPL Shop</h1>
-    <p>Explore our wide range of products and enjoy shopping with us!</p>
-    
-</body>
-</html>
+    {% tailwind_css %}
+{% endblock %}
+
+{% block title %}Shop products{% endblock %}
+
+{% block content %}
+<div class ="grid grid-cols-4 gap-4 m-4">
+{% for product in products %}
+    <div class="product-card bg-gray-800 p-4 rounded-lg">
+        {% if product.image %}
+            <img class="product-image size-50 rounded items-center" src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% endif %}
+        <h2 class='text-white p-2 text-2xl'>{{ product.name }}</h2>
+        <p class='text-green-500 font-bold'>Price: ₹{{ product.price }}</p>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
