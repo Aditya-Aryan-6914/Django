@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load static tailwind_tags %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'Index_style.css' %}">
+    {% tailwind_css %}
+{% endblock %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <div class="product-detail bg-gray-800 p-4 rounded-lg justify-items-center">
+        <h2 class='text-white p-2 text-2xl'>{{ product.name }}</h2>
+        {% if product.image %}
+            <img class="product-image size-50 rounded items-center" src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% endif %}
+         <button class="bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
+             <p class='text-green-500 font-bold'>Price: ₹{{ product.price }}</p>
+         </button>
+         <p class='text-white p-2 text-lg'>{{ product.description }}</p>
+         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{% url 'shop' %}" class="text-white no-underline">Back to Shop</a>
+         </button>
+    </div>
+{% endblock %}
