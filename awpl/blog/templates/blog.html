@@ -9,10 +9,11 @@
 
 
 {% block content %}
-    <h1 class="text-3xl font-bold">All Blog Posts</h1>
-    <p>Discover our amazing products and services. Explore our shop to find what you need!</p>
-    <a href="{% url 'post_create' %}" class="btn btn-success mb-3 justify-content-end">Create New Post</a>  
-    <div class="container row gap-4">
+    <h1 class="text-3xl font-bold text-center">All Blog Posts</h1>
+    <p class="text-center">Discover our amazing products and services. Explore our shop to find what you need!</p>
+    <a href="{% url 'post_create' %}" class="btn btn-success mb-3 justify-content-end">Create New Post</a> 
+
+    <div class="container row gap-4 m-5-auto justify-content-center">
         {% for post in posts %}
         <div class="card" style="width: 18rem;">
             {% if post.images %}
@@ -21,8 +22,11 @@
         <div class="card-body">
             <h1 class="card-title">{{ post.title }}</h1>
             <p class="card-text">{{ post.content|truncatechars:100 }}</p>
+            {% if user.is_authenticated and user == post.author %}
             <a href="{% url 'post_edit' post.id %}" class="btn btn-primary">Edit</a>
             <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+             <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read More</a>
         </div>
         </div>
         {% endfor %}

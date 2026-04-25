@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="max-width: 640px;">
+  <h1 class="mb-3">You are logged out</h1>
+  <p class="text-body-secondary">Your session has ended successfully.</p>
+  <a href="{% url 'login' %}" class="btn btn-primary">Login again</a>
+</div>
+{% endblock %}

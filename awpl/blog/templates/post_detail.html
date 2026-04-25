@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    
+{% endblock %}
+
+{% block title %}{{ post.title }} - Asclepius - World Class Health, Beauty and Wellness Products{% endblock %}
+
+{% block content %}
+<div class="container py-5 align-middle" style="max-width: 640px;">
+    <h1 class="text-3xl font-bold">{{ post.title }}</h1>
+    <p>Published on: {{ post.created_at }}</p>
+     {% if post.author %}
+    <p>Author: {{ post.author.username }}</p>
+    {% endif %}
+    {% if post.images %}
+        <img src="{{ post.images.url }}" alt="{{ post.title }}" class="img-fluid size-100 mb-4">
+    {% endif %}
+    <p>{{ post.content }}</p>
+    {% if user.is_authenticated and user == post.author %}
+        <a href="{% url 'post_edit' post.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+    {% endif %}
+    <a href="{% url 'blog' %}" class="btn btn-secondary mt-3">Back to Blog</a>
+</div>
+{% endblock %}
