@@ -1,0 +1,35 @@
+{
+  "files.associations": {
+    "*.html": "html",
+    "*.htm": "html"
+  },
+  "editor.semanticHighlighting.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "entity.name.tag",
+        "settings": {
+          "foreground": "#e06c75"
+        }
+      },
+      {
+        "scope": "entity.other.attribute-name",
+        "settings": {
+          "foreground": "#61afef"
+        }
+      },
+      {
+        "scope": "punctuation.definition.tag.begin, punctuation.definition.tag.end",
+        "settings": {
+          "foreground": "#abb2bf"
+        }
+      },
+      {
+        "scope": "string.quoted.double.html, string.quoted.single.html",
+        "settings": {
+          "foreground": "#98c379"
+        }
+      }
+    ]
+  }
+}
