@@ -20,6 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,6 +29,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('shop/', include('shop.urls')),
     path('blog/', include('blog.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 
 
     path("__reload__/", include("django_browser_reload.urls")),
