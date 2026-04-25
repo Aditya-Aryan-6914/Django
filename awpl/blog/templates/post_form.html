@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    
+{% endblock %}
+
+{% block title %}Edit / Create Post{% endblock %}
+
+
+{% block content %}
+    <h1 class="text-center m-5">
+    {% if form.instance.id %}
+    Edit Post
+    {% else %}
+    Create New Post
+    {% endif %}
+    </h1>
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-warning">Save</button>
+        <button><a href="{% url 'blog' %}" class="btn btn-secondary">Cancel</a></button>
+    </form>
+{% endblock %}

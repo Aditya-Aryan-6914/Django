@@ -1,4 +1,31 @@
+<!--All blog posts will be displayed here-->
 {% extends 'layout.html' %}
+
+{% block head %}
+    
+{% endblock %}
+
+{% block title %}All Blog - Asclepius - World Class Health, Beauty and Wellness Products{% endblock %}
+
+
 {% block content %}
-  <h1 class="card-title text-center">Blog Home</h1>
+    <h1 class="text-3xl font-bold">All Blog Posts</h1>
+    <p>Discover our amazing products and services. Explore our shop to find what you need!</p>
+    <a href="{% url 'post_create' %}" class="btn btn-success mb-3 ">Create New Post</a>  
+    <div class="container row gap-4">
+        {% for post in posts %}
+        <div class="card" style="width: 18rem;">
+            {% if post.images %}
+                <img src="{{ post.images.url }}" class="card-img-top" alt="{{ post.title }}">
+            {% endif %}
+        <div class="card-body">
+            <h1 class="card-title">{{ post.title }}</h1>
+            <p class="card-text">{{ post.content|truncatechars:100 }}</p>
+            <a href="{% url 'post_edit' post.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    
 {% endblock %}
