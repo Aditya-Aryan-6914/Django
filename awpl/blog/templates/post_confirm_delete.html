@@ -4,11 +4,14 @@
     
 {% endblock %}
 
-{% block title %}Blog - Asclepius - World Class Health, Beauty and Wellness Products{% endblock %}
-
-{% block header %}<h1 class="text-3xl font-bold">Welcome to Asclepius!</h1>{% endblock %}
+{% block title %}Post Delete Confirmation{% endblock %}
 
 {% block content %}
-    <p>Discover our amazing products and services. Explore our shop to find what you need!</p>
-    
+    <h1>Confirm Deletion</h1>
+    <p>Are you sure you want to delete the post titled "{{ post.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Yes, Delete</button>
+        <a href="{% url 'blog' %}" class="btn btn-secondary">Cancel</a>
+    </form>
 {% endblock %}
