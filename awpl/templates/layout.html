@@ -1,10 +1,15 @@
 {% load static %}
-<!doctype html>
+<!doctype html style="--cnvs-viewport-width: 1365; --cnvs-viewport-height: 945; height: 100%;">
 <html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Asclepius - World Class Health, Beauty and Wellness Products{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/layout_style.css' %}">
+    <!---Custom Title-->
+    <title>{% block title %} Top Direct Selling Company in India - Asclepius Wellness {% endblock %}</title>
+    <meta name="title" content="Top Direct Selling Company in India - Asclepius Wellness">
+    <link rel="icon" href="{% static 'Images/favicon.png' %}" type="Images/favicon.png">
+    <meta name="description" content="Asclepius Wellness is a leading direct selling company in India offering high-quality wellness, healthcare, and lifestyle products with rewarding business opportunities.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     {% block head %}
 
@@ -62,10 +67,110 @@
     </div>
   </div>
 </nav>
+
+
     <!-- Navbar End -->
     {% block content %}
 
     {% endblock %}
+
+  <footer style="background:#111; color:#fff;">
+    <div class="container">
+        <div>
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <div>
+                        <h3>Contact Us</h3>
+
+                        <p class="text-white .text-right">
+                            <strong>Asclepius Wellness Private Limited</strong><br><br>
+
+                            <strong>Corporate Office</strong><br>
+                            Plot No. 18, Pocket-8, Block-C,<br>
+                            Near Shriram Finance, Sector-17,<br>
+                            Dwarka, New Delhi - 110075
+                            <br><br>
+
+                            <strong>Registered Office</strong><br>
+                            Third Floor At Plot No. B-1/7,<br>
+                            Main Gandhipath, Jaipur,<br>
+                            Rajasthan, India, 302021
+                            <br><br>
+
+                            <strong>CIN No. : U51909RJ2014PTC084662</strong><br>
+                            <strong>GST No. : 08AAMCA9419N2ZX</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <h4>Navigations</h4>
+
+                        <ul class ="text-gray-400">
+                            <li>About us</li>
+                            <li>Our Management</li>
+                            <li>Director Message</li>
+                            <li>Achievements</li>
+                            <li>Legal & Compliance Documents</li>
+                            <li>Downloads</li>
+                            <li>Bankers</li>
+                            <li>Contact us</li>
+                            <li>Grievance Cell</li>
+                            <li>View Grievance Status</li>
+                            <li>Direct Seller Register (Search)</li>
+                            <li>Delisted Direct Sellers</li>
+                            <li>RM Login</li>
+                            <li>Audit Executive Login</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <h4>Policies</h4>
+
+                        <ul>
+                            <li>Obligations</li>
+                            <li>Prohibitions</li>
+                            <li>Model Code Of Conduct</li>
+                            <li>Disclaimer</li>
+                            <li>Other Policies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div>
+                        <h4>Download App</h4>
+
+                        <p>
+                            <img src="" alt="Android App" style="height:37px;border-radius:6px;">
+                            <img src="" alt="iOS App" style="height:37px;border-radius:6px;">
+                        </p>
+
+                        <h4>Follow us</h4>
+
+                        <div style="display:flex;gap:10px;">
+                            <span>Facebook</span>
+                            <span>X</span>
+                            <span>YouTube</span>
+                            <span>Instagram</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="padding:15px 0;text-align:center;">
+        © 2026 Asclepius Wellness Private Limited | All Rights Reserved.
+    </div>
+</footer>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
