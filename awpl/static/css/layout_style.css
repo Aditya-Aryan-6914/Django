@@ -1,24 +1,126 @@
-body{
-    background: #072c7c;
-    color: #ffffff;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
-h1{
-    color: #ffd166;
-    text-align: center;
-    font-size: 50px;
-    margin-top: 50px;
-}
-p{
-    color: #8ecae6;
-    text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
 
+.header{
+    width:100%;
+    background:rgba(0,0,0,0.75);
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1000;
 }
+
+.container{
+    width:95%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:90px;
+}
+
+/* Logo */
+
+.logo img{
+    height:55px;
+}
+
+/* Delivery */
+
+.delivery{
+    display:flex;
+    align-items:center;
+    color:#fff;
+    gap:10px;
+}
+
+.delivery i{
+    color:#ff8c00;
+    font-size:20px;
+}
+
+.delivery small{
+    display:block;
+    font-size:12px;
+    color:#ddd;
+}
+
+.delivery span{
+    font-weight:bold;
+    font-size:18px;
+}
+
+/* Navigation */
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+.navbar ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    transition:.3s;
+}
+
+.navbar ul li a:hover{
+    color:#ff8c00;
+}
+
+/* Right */
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.header-right select{
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:10px 15px;
+    outline:none;
+    cursor:pointer;
+}
+
+.header-right a{
+    color:#fff;
+    text-decoration:none;
+    position:relative;
+    font-size:18px;
+}
+
+.header-right a:hover{
+    color:#ff8c00;
+}
+
+.icon span{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    background:#ff8c00;
+    color:#fff;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    font-size:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
 
 /* Footer styles */
 .site-footer{
-    background: #03112b;
+    background: #ca3f15;
     color: #dfeffd;
     padding: 40px 0;
     font-size: 14px;
