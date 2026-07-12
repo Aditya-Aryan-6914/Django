@@ -10,19 +10,83 @@
 {% block title %}Shop products{% endblock %}
 
 {% block content %}
-<div class ="grid grid-cols-4 gap-4 m-4">
-{% for product in products %}
-    <div class="product-card bg-gray-800 p-4 rounded-lg justify-items-center">
-        {% if product.image %}
-            <img class="product-image size-50 rounded items-center" src="{{ product.image.url }}" alt="{{ product.name }}">
-        {% endif %}
-        <h2 class='text-white p-2 text-2xl'>{{ product.name }}</h2>
-        <a href="{% url 'product_detail' product.id %}">
-            <button class="bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
-                <p class='text-green-500 font-bold'>Price: ₹{{ product.price }}</p>
-            </button>
-        </a>
+<section class="hero"></section>
+
+  <div class="orange-bar">
+    <div class="breadcrumb">
+      <a href="#">Home</a> /
+      <span>AGRICULTURE PRODUCTS</span>
     </div>
-{% endfor %}
-</div>
+  </div>
+
+  <div class="container">
+
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul>
+        <li>Fertilizers</li>
+        <li>Pesticides</li>
+        <li>Seeds</li>
+        <li>Organic Products</li>
+        <li>Plant Growth</li>
+        <li>Farming Tools</li>
+      </ul>
+    </aside>
+
+    <section class="products">
+
+      <div class="card">
+        <div class="image-box">
+          <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12911_532298.jpeg" class="main-img" alt="Eco Harigold Front">
+          <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T1292_010176.jpeg" class="hover-img" alt="Eco Harigold Back">
+        </div>
+        <div class="card-content">
+          <h3>VedikAgro Eco Harigold</h3>
+          <div class="price">₹399</div>
+          <p>Organic bio-fertilizer that improves soil health and boosts crop growth naturally.</p>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-box">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeEf_T_ltd5uE5phROxTfViAO3MMV59wZ7sX2qKy6h6U8FTqY" class="main-img" alt="Agro-90 Front">
+          <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T1282_838298.jpeg" class="hover-img" alt="Agro-90 Back">
+        </div>
+        <div class="card-content">
+          <h3>VedikAgro Agro-90</h3>
+          <div class="price">₹499</div>
+          <p>Concentrated silicon spreader and non-ionic spray adjuvant for enhanced crop protection.</p>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-box">
+          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRCgF_69WkDumV7kLxhUoxC75UhQ7Yll9-o53lcqkvGNupgDlO8" class="main-img" alt="BhuVita Front">
+          <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T1302_734052.jpeg" class="hover-img" alt="BhuVita Back">
+        </div>
+        <div class="card-content">
+          <h3>VedikAgro BhuVita</h3>
+          <div class="price">₹499</div>
+          <p>Powerful biostimulant that enhances root development, plant growth, and crop yield naturally.</p>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-box">
+          <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T1271_028516.jpeg" class="main-img" alt="PGPR Front">
+          <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12722_640872.jpeg" class="hover-img" alt="PGPR Back">
+        </div>
+        <div class="card-content">
+          <h3>VedikAgro PGPR</h3>
+          <div class="price">₹399</div>
+          <p>Protect your crops from insects and diseases.</p>
+          <a href="#" class="btn">Buy Now</a>
+        </div>
+      </div>
+
+    </section>
+  </div>
 {% endblock %}
