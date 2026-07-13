@@ -1,175 +1,179 @@
 {% load static %}
 <!doctype html style="--cnvs-viewport-width: 1365; --cnvs-viewport-height: 945; height: 100%;">
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/layout_style.css' %}">
     <title>{% block title %} Top Direct Selling Company in India - Asclepius Wellness {% endblock %}</title>
     <meta name="title" content="Top Direct Selling Company in India - Asclepius Wellness">
     <link rel="icon" href="{% static 'Images/favicon.png' %}" type="Images/favicon.png">
-    <meta name="description" content="Asclepius Wellness is a leading direct selling company in India offering high-quality wellness, healthcare, and lifestyle products with rewarding business opportunities.">
-    {% block header %}
+    <meta name="description"
+        content="Asclepius Wellness is a leading direct selling company in India offering high-quality wellness, healthcare, and lifestyle products with rewarding business opportunities.">
+    {% block head %}
 
     {% endblock %}
-  </head>
-    <body>
-        <header class="navbar">
+</head>
 
-    <!-- Logo -->
-    <div class="logo">
-        <img src="{% static 'Images/awpl-large-logo.png' %}" alt="Asclepius Wellness Logo">
-    </div>
+<body class="{% block body_class %}{% endblock %}">
+    <header class="navbar">
 
-    <!-- Delivery -->
-    <div class="delivery">
-        <i class="fa-solid fa-location-dot"></i>
-
-        <div>
-            <span>Deliver to</span>
-            <h4>302022</h4>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="{% static 'Images/awpl-large-logo.png' %}" alt="Asclepius Wellness Logo">
         </div>
 
-    </div>
+        <!-- Delivery -->
+        <div class="delivery">
+            <i class="fa-solid fa-location-dot"></i>
 
-    <!-- Menu -->
-    <nav>
-
-        <ul>
-
-            <li><a href="{% url 'home' %}">HOME</a></li>
-            <li><a href="{% url 'blog' %}">BLOG</a></li>
-            <li><a href="{% url 'shop' %}">PRODUCTS</a></li>
-            <li><a href="{% url 'login' %}">LOGIN</a></li>
-            <li><a href="{% url 'register' %}">REGISTER</a></li>
-
-        </ul>
-
-    </nav>
-
-    <!-- Right Side -->
-
-    <div class="right">
-
-        <select>
-            <option>Select Language</option>
-            <option>English</option>
-            <option>Hindi</option>
-        </select>
-
-        <i class="fa-solid fa-magnifying-glass"></i>
-
-        <div class="icon">
-            <i class="fa-regular fa-heart"></i>
-            <span>0</span>
-        </div>
-
-        <div class="icon">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span>0</span>
-        </div>
-
-    </div>
-
-        </header>
-
-        <main class="page-content">
-            {% block content %}
-            <h1 style="text-align: center;">Welcome to Asclepius Wellness</h1>
-            <p>Your gateway to premium wellness and lifestyle products.</p>
-            {% endblock %}
-        </main>
-
-        <footer class="footer">
-    <div class="footer-container">
-
-        <!-- Contact -->
-        <div class="footer-column">
-            <h3>Contact Us</h3>
-
-            <div class="address">
-                <strong>Asclepius Wellness Private Limited</strong><br>
-                <strong>Corporate Office</strong><br>
-                Plot No. 18, Pocket-8, Block-C,<br>
-                Near Shriram Finance, Sector-17,<br>
-                Dwarka, New Delhi - 110075
+            <div>
+                <span>Deliver to</span>
+                <h4>302022</h4>
             </div>
 
-            <div class="address">
-                <strong>Registered Office</strong><br>
-                Third Floor At Plot No. B-1/7,<br>
-                Main Gandhipath, Jaipur,<br>
-                Rajasthan, India, 302021
-            </div>
-
-            <div class="company-info">
-                <strong>CIN No. :</strong> U51909RJ2014PTC084662<br>
-                <strong>GST No. :</strong> 08AAMC94919N2ZX
-            </div>
         </div>
 
-        <!-- Navigation -->
-        <div class="footer-column">
-            <h3>Navigations</h3>
+        <!-- Menu -->
+        <nav>
 
             <ul>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Our Management</a></li>
-                <li><a href="#">Director Message</a></li>
-                <li><a href="#">Achievements</a></li>
-                <li><a href="#">Legal & Compliance Documents</a></li>
-                <li><a href="#">Downloads</a></li>
-                <li><a href="#">Bankers</a></li>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Grievance Cell</a></li>
-                <li><a href="#">View Grievance Status</a></li>
-                <li><a href="#">Direct Seller Register (Search)</a></li>
-                <li><a href="#">Delisted Direct Sellers</a></li>
-                <li><a href="#">RM Login</a></li>
-                <li><a href="#">Audit Executive Login</a></li>
+
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'blog' %}">BLOG</a></li>
+                <li><a href="{% url 'shop' %}">PRODUCTS</a></li>
+                <li><a href="{% url 'login' %}">LOGIN</a></li>
+                <li><a href="{% url 'register' %}">REGISTER</a></li>
+
             </ul>
-        </div>
 
-        <!-- Policies -->
-        <div class="footer-column">
-            <h3>Policies</h3>
+        </nav>
 
-            <ul>
-                <li><a href="#">Obligations</a></li>
-                <li><a href="#">Prohibitions</a></li>
-                <li><a href="#">Model Code Of Conduct</a></li>
-                <li><a href="#">Disclaimer</a></li>
-                <li><a href="#">Other Policies</a></li>
-            </ul>
-        </div>
+        <!-- Right Side -->
 
-        <!-- App -->
-        <div class="footer-column">
-            <h3>Download App</h3>
+        <div class="right">
 
-            <div class="app-buttons">
-                <img src="images/google-play.png" alt="Google Play">
-                <img src="images/app-store.png" alt="App Store">
+            <select>
+                <option>Select Language</option>
+                <option>English</option>
+                <option>Hindi</option>
+            </select>
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <div class="icon">
+                <i class="fa-regular fa-heart"></i>
+                <span>0</span>
             </div>
 
-            <h3 class="follow-title">Follow us</h3>
-
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>0</span>
             </div>
+
         </div>
 
-    </div>
+    </header>
 
-    <div class="footer-bottom">
-        © 2026 Asclepius Wellness Private Limited | All Rights Reserved.
-    </div>
-</footer>
+    <main class="page-content {% block content_class %}{% endblock %}">
+        {% block content %}
+        <h1 style="text-align: center;">Welcome to Asclepius Wellness</h1>
+        <p>Your gateway to premium wellness and lifestyle products.</p>
+        {% endblock %}
+    </main>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
- 
-  </body>
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Contact -->
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+
+                <div class="address">
+                    <strong>Asclepius Wellness Private Limited</strong><br>
+                    <strong>Corporate Office</strong><br>
+                    Plot No. 18, Pocket-8, Block-C,<br>
+                    Near Shriram Finance, Sector-17,<br>
+                    Dwarka, New Delhi - 110075
+                </div>
+
+                <div class="address">
+                    <strong>Registered Office</strong><br>
+                    Third Floor At Plot No. B-1/7,<br>
+                    Main Gandhipath, Jaipur,<br>
+                    Rajasthan, India, 302021
+                </div>
+
+                <div class="company-info">
+                    <strong>CIN No. :</strong> U51909RJ2014PTC084662<br>
+                    <strong>GST No. :</strong> 08AAMC94919N2ZX
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-column">
+                <h3>Navigations</h3>
+
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Our Management</a></li>
+                    <li><a href="#">Director Message</a></li>
+                    <li><a href="#">Achievements</a></li>
+                    <li><a href="#">Legal & Compliance Documents</a></li>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">Bankers</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Grievance Cell</a></li>
+                    <li><a href="#">View Grievance Status</a></li>
+                    <li><a href="#">Direct Seller Register (Search)</a></li>
+                    <li><a href="#">Delisted Direct Sellers</a></li>
+                    <li><a href="#">RM Login</a></li>
+                    <li><a href="#">Audit Executive Login</a></li>
+                </ul>
+            </div>
+
+            <!-- Policies -->
+            <div class="footer-column">
+                <h3>Policies</h3>
+
+                <ul>
+                    <li><a href="#">Obligations</a></li>
+                    <li><a href="#">Prohibitions</a></li>
+                    <li><a href="#">Model Code Of Conduct</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Other Policies</a></li>
+                </ul>
+            </div>
+
+            <!-- App -->
+            <div class="footer-column">
+                <h3>Download App</h3>
+
+                <div class="app-buttons">
+                    <img src="images/google-play.png" alt="Google Play">
+                    <img src="images/app-store.png" alt="App Store">
+                </div>
+
+                <h3 class="follow-title">Follow us</h3>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Asclepius Wellness Private Limited | All Rights Reserved.
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</body>
+
 </html>
