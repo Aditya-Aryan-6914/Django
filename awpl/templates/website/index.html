@@ -1,17 +1,31 @@
 {% extends 'layout.html' %}
 {% load static %}
 
+{% block body_class %}page-home{% endblock %}
+
 {% block head %}
-    <link rel="stylesheet" href="{% static 'Index_style.css' %}">
+    
 {% endblock %}
 
-{% block title %}Asclepius - World Class Health, Beauty and Wellness Products{% endblock %}
+{% block title %}Top Direct Selling Company in India - Asclepius Wellness{% endblock %}
 
-{% block header %}<h1 class="text-3xl font-bold">Welcome to Asclepius!</h1>{% endblock %}
+{% block content_class %}page-content--home{% endblock %}
 
 {% block content %}
-    <p>Discover our amazing products and services. Explore our shop to find what you need!</p>
-    <button onclick="window.location.href='/shop/'" class="bg-pink-200 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-        Visit Shop
-    </button>
+<section class="home-hero">
+    <video class="home-hero__video" autoplay muted loop playsinline poster="{% static 'Images/awpl-large-logo.png' %}">
+        <source src="{% static 'Images/asclepius-sniss-intro.mp4' %}" type="video/mp4">
+    </video>
+    <div class="home-hero__overlay"></div>
+    <div class="home-hero__content">
+        <img class="home-hero__logo" src="{% static 'Images/awpl-large-logo.png' %}" alt="Asclepius Wellness">
+    </div>
+</section>
+
+<section class="home-section">
+    <div class="home-section__inner">
+        <h2 class="home-section__title">Welcome to Asclepius Wellness</h2>
+        <p class="home-section__text">This area stays in the normal page flow below the hero, so you can add additional content, product highlights, company information, or calls to action right underneath the first screen section.</p>
+    </div>
+</section>
 {% endblock %}
