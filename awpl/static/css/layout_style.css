@@ -100,13 +100,8 @@ body{
     font-size:clamp(1.6rem, 2.5vw, 2.4rem);
     margin-bottom:12px;
     color:#151515;
-}
+    text-align:center;
 
-.home-section__text{
-    max-width:760px;
-    color:#4a4a4a;
-    line-height:1.8;
-    font-size:1.02rem;
 }
 
 /* Navbar */
@@ -409,10 +404,6 @@ nav a{
     font-size:.98rem;
 }
 
-.home-section__text{
-    font-size:.98rem;
-}
-
 }
 
 @media(max-width:480px){
@@ -516,7 +507,7 @@ nav ul{
 }
 
 .app-buttons{
-    display:flex;
+
     gap:12px;
     margin-bottom:35px;
 }
