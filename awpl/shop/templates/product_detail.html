@@ -3,24 +3,757 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'Index_style.css' %}">
-    {% tailwind_css %}
+   <style>
+        /* Core Structural Configurations & Standard Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            scroll-behavior: smooth;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Full-Width Graphic Category Header Banner (No margins or padding) */
+        .image-banner-row {
+            width: 100%;
+            display: block;
+            line-height: 0; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-banner-row img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            max-height: 220px;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+
+        /* Full-Width Orange Breadcrumb Bar directly under the image */
+        .orange-breadcrumb-bar {
+            background-color: #f26522;
+            color: #ffffff;
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        .orange-breadcrumb-bar .breadcrumb-content {
+            max-width: 1160px;
+            margin: 0 auto;
+            letter-spacing: 0.5px;
+        }
+
+        /* Grid Layout for Gallery vs Content Specification */
+        .main-product-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+
+        @media (min-width: 768px) {
+            .main-product-layout {
+                grid-template-columns: 5fr 7fr;
+            }
+        }
+
+        /* Media Gallery Presentation Properties (Margins & Paddings Removed) */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-image-box {
+            position: relative;
+            background: #fafafa;
+            height: 450px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-image-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+        }
+
+        /* Initial Setup for Non-Active Images to prepare them for Left Slide */
+        .main-image-box img.slide-prep-left {
+            transition: none !important;
+            transform: translateX(100%) !important;
+            opacity: 0 !important;
+        }
+
+        .main-image-box img.active-slide {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .main-image-box img.exit-slide {
+            opacity: 0;
+            transform: translateX(-100%);
+            z-index: 1;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .thumb {
+            width: calc(25% - 11.25px);
+            height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            object-fit: cover;
+            cursor: pointer;
+            padding: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .thumb:hover {
+            border-color: #f26522;
+        }
+
+        .thumb.active {
+            border-color: #f26522;
+            background: #fff3ec;
+        }
+
+        /* Content Details Typography & Meta Sizing */
+        .category-tag {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .main-product-title {
+            font-size: 2.2rem;
+            color: #f26522;
+            margin-top: 8px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .price-box {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 25px 0;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 2;
+        }
+
+        .instock {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .description-block {
+            margin-bottom: 35px;
+        }
+
+        .description-block h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .description-block p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .delivery-check {
+            background-color: #fffaf7;
+            border: 1px dashed #f26522;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+        }
+
+        .delivery-check i {
+            color: #f26522;
+            margin-right: 6px;
+        }
+
+        .change-btn {
+            background: none;
+            border: none;
+            color: #f26522;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Action Bars, Buttons, and Picker Items Styling */
+        .actions-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .quantity-picker {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quantity-picker button {
+            background: #eee;
+            border: none;
+            width: 40px;
+            height: 45px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .quantity-picker button:hover {
+            background: #ddd;
+        }
+
+        .quantity-picker input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            font-weight: bold;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .add-to-cart-btn {
+            background-color: #f26522;
+            color: white;
+            border: none;
+            padding: 0 40px;
+            height: 45px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #d44d0e;
+        }
+
+        .product-info-btn {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 0 25px;
+            height: 45px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: background 0.2s ease;
+        }
+
+        .product-info-btn:hover {
+            background-color: #fafafa;
+        }
+
+        /* Data Presentation List Tabs Styles */
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 25px;
+        }
+
+        .tab-link {
+            background: none;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-link.active {
+            color: #f26522;
+            border-bottom: 2px solid #f26522;
+            font-weight: bold;
+        }
+
+        .tabs-content-pane {
+            display: none;
+            animation: fadeIn 0.4s ease;
+            padding: 10px 5px;
+        }
+
+        .tabs-content-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .benefits-list, .usage-list, .ingredients-list {
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 2.2;
+        }
+
+        /* Share Icons Row */
+        .share-row {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .share-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .share-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .share-icon.fb { background-color: #3b5998; }
+        .share-icon.tw { background-color: #1da1f2; }
+        .share-icon.wa { background-color: #25d366; }
+        .share-icon.email { background-color: #888888; }
+
+        /* Product Cross Sell Grid Item Framework */
+        .related-products-section {
+            border-top: 1px solid #eee;
+            padding-top: 50px;
+            margin-top: 20px;
+            margin-bottom: 80px;
+        }
+
+        .related-heading {
+            font-size: 1.5rem;
+            color: #222;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .related-card {
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            background: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .related-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .wishlist-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #fff;
+            border: 1px solid #eee;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            color: #999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .wishlist-icon.liked {
+            color: #e74c3c;
+            border-color: #e74c3c;
+            background-color: #fdf2f2;
+        }
+
+        .related-img-wrap {
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .related-img-wrap img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .related-prices {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* UI Floating Control Overlays */
+        .side-floating-widgets {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .widget-btn {
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            transition: transform 0.2s ease;
+        }
+
+        .widget-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .orange-gradient-1 { background-color: #f26522; }
+        .orange-gradient-2 { background-color: #f7931e; }
+        .scroll-top-btn { 
+            background-color: #a0a0a0; 
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
 {% endblock %}
 
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
-    <div class="product-detail bg-gray-800 p-4 rounded-lg justify-items-center">
-        <h2 class='text-white p-2 text-2xl'>{{ product.name }}</h2>
-        {% if product.image %}
-            <img class="product-image size-50 rounded items-center" src="{{ product.image.url }}" alt="{{ product.name }}">
-        {% endif %}
-         <button class="bg-blue-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
-             <p class='text-green-500 font-bold'>Price: ₹{{ product.price }}</p>
-         </button>
-         <p class='text-white p-2 text-lg'>{{ product.description }}</p>
-         <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            <a href="{% url 'shop' %}" class="text-white no-underline">Back to Shop</a>
-         </button>
+   <!-- Full Width Main Graphic Banner -->
+    <div class="image-banner-row">
+        <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/category/5B.jpeg" alt="Category Banner Graphic">
     </div>
+
+    <!-- Solid Full Width Orange Navigation Breadcrumb Bar -->
+    <div class="orange-breadcrumb-bar">
+        <div class="breadcrumb-content">
+            Home / AGRICULTURE / VEDIK AGRO ECO HARIYALI
+        </div>
+    </div>
+
+    <main class="container main-product-layout">
+        
+        <div class="product-gallery">
+            <div class="main-image-box" id="mainImageBox">
+                <img class="active-slide" src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12911_532298.jpeg" alt="Product Image 1">
+                <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12922_010176.jpeg" alt="Product Image 2">
+                <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12933_010176.jpeg" alt="Product Image 3">
+                <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12944_393950.jpg" alt="Product Image 4">
+            </div>
+            <div class="thumbnail-row">
+                <img class="thumb active" src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12911_532298.jpeg" alt="Thumb Preview 1">
+                <img class="thumb" src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12922_010176.jpeg" alt="Thumb Preview 2">
+                <img class="thumb" src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12933_010176.jpeg" alt="Thumb Preview 3">
+                <img class="thumb" src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12944_393950.jpg" alt="Thumb Preview 4">
+            </div>
+        </div>
+
+        <div class="product-details-content">
+            <span class="category-tag">AGRICULTURE</span>
+            <h2 class="main-product-title">VEDIK AGRO ECO HARIYALI</h2>
+            
+            <div class="price-box">
+                <p><strong>MRP :</strong> ₹1355.00/- &nbsp;|&nbsp; <strong>DP Price :</strong> ₹903.00/- &nbsp;|&nbsp; <strong>SP :</strong> 6.00</p>
+                <p><strong>Availability :</strong> <span class="instock">Instock</span></p>
+                <p><strong>Quantity :</strong> 500.00 GM</p>
+            </div>
+
+            <div class="description-block">
+                <h4>Description</h4>
+                <p>VEDIK AGRO ECO HARIYALI is an eco-friendly organic solution designed to accelerate crop growth cycle, maximize nutrient uptake, and naturally revitalize soil ecosystems.</p>
+            </div>
+
+            <div class="delivery-check">
+                <p><i class="fa-solid fa-location-dot"></i> Deliver to : <span id="pincodeDisplay">302022</span></p>
+                <button class="change-btn" onclick="changePincode()">Change</button>
+            </div>
+
+            <div class="actions-row">
+                <div class="quantity-picker">
+                    <button id="qtyMinus">-</button>
+                    <input type="text" id="qtyInput" value="1" readonly>
+                    <button id="qtyPlus">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="alert('Added to cart successfully!')">Add to cart</button>
+                <button class="product-info-btn"><i class="fa-regular fa-file-pdf"></i> PRODUCT INFO</button>
+            </div>
+
+            <div class="tabs-header">
+                <button class="tab-link active" data-target="tab-benefits"><i class="fa-solid fa-list"></i> Benefits</button>
+                <button class="tab-link" data-target="tab-usage"><i class="fa-solid fa-circle-info"></i> How to Use</button>
+                <button class="tab-link" data-target="tab-ingredients"><i class="fa-solid fa-flask"></i> Ingredients</button>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tabs-content-pane active" id="tab-benefits">
+                    <ol class="benefits-list">
+                        <li>Supports seed germination.</li>
+                        <li>Promotes the growth of plant roots.</li>
+                        <li>Creates optimal climate conditions to increase the count of beneficial microorganisms in the soil.</li>
+                        <li>Supports the availability of major and micronutrient elements in the soil for plants.</li>
+                        <li>Enhances the soil's water-holding capacity and improves its physical structure.</li>
+                    </ol>
+                </div>
+                <div class="tabs-content-pane" id="tab-usage">
+                    <ul class="usage-list">
+                        <li>Mix 500 GM of Vedik Agro Eco Hariyali with 100 Litres of water.</li>
+                        <li>Spray uniformly over foliage or apply via drip irrigation systems.</li>
+                        <li>For best results, apply during early morning or late afternoon.</li>
+                    </ul>
+                </div>
+                <div class="tabs-content-pane" id="tab-ingredients">
+                    <ul class="ingredients-list">
+                        <li>Humic Acid: 60%</li>
+                        <li>Fulvic Acid: 15%</li>
+                        <li>Organic Potassium (K2O): 12%</li>
+                        <li>Carrier & Nutrients: Balance 13%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="share-row">
+                <span>Share:</span>
+                <a href="#" class="share-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="share-icon tw"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="share-icon wa"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="share-icon email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="container related-products-section">
+        <h3 class="related-heading">Related Products</h3>
+        <div class="related-grid">
+            
+            <div class="related-card">
+                <button class="wishlist-icon" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></button>
+                <div class="related-img-wrap">
+                    <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12722_640872.jpeg" alt="Related Product Image 1">
+                </div>
+                <h4 class="related-title">VEDIK AGRO PGPR</h4>
+                <p class="related-prices">MRP : ₹687.00 &nbsp; DP : ₹458.00 &nbsp; SP : 3.00</p>
+            </div>
+
+            <div class="related-card">
+                <button class="wishlist-icon" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></button>
+                <div class="related-img-wrap">
+                    <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T12822_838298.jpeg" alt="Related Product Image 2">
+                </div>
+                <h4 class="related-title">VEDIK AGRO AGRO 90</h4>
+                <p class="related-prices">MRP : ₹659.00 &nbsp; DP : ₹440.00 &nbsp; SP : 2.00</p>
+            </div>
+
+            <div class="related-card">
+                <button class="wishlist-icon" onclick="toggleWishlist(this)"><i class="fa-regular fa-heart"></i></button>
+                <div class="related-img-wrap">
+                    <img src="https://awpl-kycdocs.s3.ap-south-1.amazonaws.com/upload1/product/_T13022_734052.jpeg" alt="Related Product Image 3">
+                </div>
+                <h4 class="related-title">VEDIK AGRO BHUVITA</h4>
+                <p class="related-prices">MRP : ₹662.00 &nbsp; DP : ₹441.00 &nbsp; SP : 2.00</p>
+            </div>
+
+        </div>
+    </section>
+<script>
+        // 1. Sliding Gallery System & 5-Second Autoplay Loop Logic
+        const mainImageBox = document.getElementById('mainImageBox');
+        const slideImages = mainImageBox.querySelectorAll('img');
+        const thumbnails = document.querySelectorAll('.thumb');
+        let currentIndex = 0;
+        let autoplayTimer = null;
+        let isTransitioning = false;
+
+        function updateGalleryImage(nextIndex) {
+            if (currentIndex === nextIndex || isTransitioning) return;
+            isTransitioning = true;
+
+            thumbnails.forEach(t => t.classList.remove('active'));
+            thumbnails[nextIndex].classList.add('active');
+
+            const currentSlide = slideImages[currentIndex];
+            const nextSlide = slideImages[nextIndex];
+
+            // Force state reset to ensure the incoming image resets cleanly to the right view bounds
+            nextSlide.classList.add('slide-prep-left');
+            nextSlide.className = 'slide-prep-left'; 
+            
+            // Force browser layout engine update execution
+            nextSlide.offsetHeight;
+
+            // Trigger animation runtime transitions
+            currentSlide.className = 'exit-slide';
+            nextSlide.className = 'active-slide';
+
+            currentIndex = nextIndex;
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 600);
+        }
+
+        function startAutoplay() {
+            autoplayTimer = setInterval(() => {
+                let nextIndex = (currentIndex + 1) % slideImages.length;
+                updateGalleryImage(nextIndex);
+            }, 5000); 
+        }
+
+        function resetAutoplayTimer() {
+            clearInterval(autoplayTimer);
+            startAutoplay();
+        }
+
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', function() {
+                updateGalleryImage(index);
+                resetAutoplayTimer(); 
+            });
+        });
+
+        startAutoplay();
+
+        // 2. Quantity Picker System
+        const qtyInput = document.getElementById('qtyInput');
+        const qtyPlus = document.getElementById('qtyPlus');
+        const qtyMinus = document.getElementById('qtyMinus');
+
+        qtyPlus.addEventListener('click', () => {
+            let val = parseInt(qtyInput.value) || 1;
+            qtyInput.value = val + 1;
+        });
+
+        qtyMinus.addEventListener('click', () => {
+            let val = parseInt(qtyInput.value) || 1;
+            if (val > 1) {
+                qtyInput.value = val - 1;
+            }
+        });
+
+        // 3. Dynamic Tabs Management
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabPanes = document.querySelectorAll('.tabs-content-pane');
+
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                tabLinks.forEach(l => l.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+
+                this.classList.add('active');
+                const target = this.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // 4. Interactive Wishlist Toggle
+        function toggleWishlist(btn) {
+            btn.classList.toggle('liked');
+            const icon = btn.querySelector('i');
+            if (btn.classList.contains('liked')) {
+                icon.className = 'fa-solid fa-heart';
+            } else {
+                icon.className = 'fa-regular fa-heart';
+            }
+        }
+
+     
+        // 6. Delivery Pincode Switcher Demo
+        function changePincode() {
+            const currentPin = document.getElementById('pincodeDisplay').innerText;
+            const newPin = prompt("Enter delivery pincode:", currentPin);
+            if (newPin && newPin.trim() !== "" && !isNaN(newPin)) {
+                document.getElementById('pincodeDisplay').innerText = newPin;
+            } else if (newPin !== null) {
+                alert("Please enter a valid numeric pincode.");
+            }
+        }
+    </script>
 {% endblock %}
