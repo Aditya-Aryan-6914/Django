@@ -1,0 +1,428 @@
+.page-home .categories-section {
+  padding: 24px 0 32px;
+  background: #f5f5f5;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.page-home .categories-section h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+.page-home .categories-slider-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.page-home .categories-container-fluid {
+  width: 100%;
+}
+
+.page-home .categories-row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+}
+
+.page-home .category-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+  padding: 0 5px;
+}
+
+.page-home .category-item:hover {
+  transform: translateY(-5px);
+}
+
+.page-home .category-circle {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 320px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+}
+
+.page-home .category-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-home .category-item h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.8px;
+  margin-top: 5px;
+}
+
+.page-home .slider-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  z-index: 15;
+}
+
+.page-home .slider-arrow:hover {
+  background: #0b9444;
+  color: #fff;
+  border-color: #0b9444;
+}
+
+.page-home .arrow-left { left: 15px; }
+.page-home .arrow-right { right: 15px; }
+
+.page-home .bestsellers-section {
+  background: #fff;
+  padding: 60px 0 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.page-home .bestsellers-section .section-title h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 35px;
+}
+
+.page-home .product-card {
+  position: relative;
+  background: transparent;
+  text-align: center;
+  height: 100%;
+  transition: 0.3s;
+}
+
+.page-home .product-img {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: #e5e5e7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.page-home .product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.page-home .product-card:hover .product-img img {
+  transform: scale(1.03);
+}
+
+.page-home .wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.95);
+  color: #777;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 5;
+}
+
+.page-home .wishlist-btn:hover {
+  background: #fff;
+  color: #e63946;
+}
+
+.page-home .product-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.4px;
+  line-height: 1.35;
+  padding: 0 4px;
+}
+
+.page-home .product-price {
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.page-home .video-range-section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-home .video-range-section video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.page-home .video-range-section .video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+.page-home .video-range-section .video-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 760px;
+  padding: 20px;
+}
+
+.page-home .video-range-heading {
+  color: #fff;
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.page-home .video-range-copy {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.page-home .empower-wellness-section {
+  background: #fff;
+  position: relative;
+  z-index: 10;
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid #eee;
+}
+
+.page-home .empower-img-col {
+  background-image: url('https://static.wixstatic.com/media/0ff224_2b1700a9d27e4ce2b4e6a230068bc7e3~mv2.webp/v1/fill/w_640,h_280,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/0ff224_2b1700a9d27e4ce2b4e6a230068bc7e3~mv2.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: 650px;
+}
+
+.page-home .empower-scroll-container {
+  height: 650px;
+  overflow-y: auto;
+  padding: 60px 50px;
+  scroll-behavior: smooth;
+}
+
+.page-home .empower-scroll-container::-webkit-scrollbar { width: 6px; }
+.page-home .empower-scroll-container::-webkit-scrollbar-track { background: #f1f1f1; }
+.page-home .empower-scroll-container::-webkit-scrollbar-thumb { background: #0b9444; border-radius: 10px; }
+.page-home .empower-scroll-container::-webkit-scrollbar-thumb:hover { background: #087536; }
+
+.page-home .empower-brand {
+  color: #d9834b;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.page-home .empower-title {
+  color: #1f1f1f;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.page-home .empower-lead {
+  color: #444;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  border-left: 4px solid #0b9444;
+  padding-left: 15px;
+}
+
+.page-home .empower-subtitle {
+  color: #0b9444;
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 35px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.page-home .empower-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.page-home .empower-list li {
+  color: #555;
+  font-size: 14.5px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.page-home .empower-p {
+  color: #555;
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.page-home .nested-list {
+  padding-left: 0;
+  list-style: none;
+  margin-top: 15px;
+}
+
+.page-home .nested-list li {
+  margin-bottom: 22px;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 3px solid #d9834b;
+}
+
+.page-home .nested-list strong {
+  color: #111;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 991px) {
+  .page-home .empower-scroll-container {
+    height: 500px;
+    padding: 40px 20px;
+  }
+
+  .page-home .empower-img-col {
+    min-height: 350px;
+  }
+
+  .page-home .product-img {
+    height: 280px;
+  }
+
+  .page-home .product-card h3 {
+    font-size: 14px;
+  }
+
+  .page-home .product-price {
+    font-size: 13px;
+  }
+
+  .page-home .categories-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 0;
+  }
+
+  .page-home .categories-slider-wrapper {
+    padding: 0 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-home .product-img {
+    height: 220px;
+  }
+
+  .page-home .bestsellers-section {
+    padding: 40px 0;
+  }
+
+  .page-home .product-card h3 {
+    font-size: 13px;
+  }
+
+  .page-home .product-price {
+    font-size: 12px;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-home .categories-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-home .categories-section h2 {
+    font-size: 24px;
+  }
+
+  .page-home .categories-slider-wrapper {
+    padding: 0 35px;
+  }
+
+  .page-home .slider-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .page-home .arrow-left { left: 5px; }
+  .page-home .arrow-right { right: 5px; }
+}
