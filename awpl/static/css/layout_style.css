@@ -88,7 +88,7 @@ body{
 
 .home-section{
     background:#ffffff;
-    padding:72px 24px 88px;
+    padding:72px 24px;
 }
 
 .home-section__inner{
@@ -344,7 +344,7 @@ nav ul{
 }
 
 .home-section{
-    padding:56px 18px 72px;
+    padding:56px 18px 32px;
 }
 
 }
