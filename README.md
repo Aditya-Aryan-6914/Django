@@ -35,7 +35,7 @@ AWPL is a Django web application that combines a simple public website, a blog, 
 
 ## Local Setup
 
-The repository includes a dependency file named `requirments.txt`.
+The repository includes a dependency file named `requirements.txt`.
 
 1. Create and activate a virtual environment:
 
@@ -47,7 +47,7 @@ source .venv/bin/activate
 2. Install dependencies:
 
 ```bash
-pip install -r requirments.txt
+pip install -r requirements.txt
 ```
 
 3. Apply database migrations:
@@ -98,7 +98,7 @@ http://127.0.0.1:8000/
 - Blog post creation, editing, and deletion require a logged-in user.
 - Uploaded images are saved under the `media/` directory.
 - The app is configured for development with `DEBUG = True`.
-- If you add new dependencies, update `requirments.txt` so the setup steps stay accurate.
+- If you add new dependencies, update `requirements.txt` so the setup steps stay accurate.
 
 ## Useful Commands
 
